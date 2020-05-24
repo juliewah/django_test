@@ -11,10 +11,10 @@ h1{
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	background-color: blue;
+	background-color: #A3D1D1;
 }
 .navbar a{
-	color: #A3D1D1;
+	color: black;
 }
 
 img {
