@@ -20,6 +20,6 @@ from trips.views import home, showImg, post_detail
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home), #首頁
-    path('showImg/', showImg)
+    path('showImg/', showImg),
     re_path(r'^post/(?P<pk>\d+)/$', post_detail, name="post_detail"),
 ]

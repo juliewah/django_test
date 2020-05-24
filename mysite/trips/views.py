@@ -11,3 +11,9 @@ def home(request):
 def post_detail(request, pk):
 	post = Post.objects.get(pk=pk)
 	return render(request, 'post.html', {'post':post})
+
+def showImg(request):
+	post_list = Post.objects.all()
+	return render(request, 'showImg.html', {
+		'post_list': post_list,
+		})
