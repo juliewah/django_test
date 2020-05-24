@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
-from trips.views import home, post_detail
+from trips.views import home, showImg, post_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home), #首頁
+    path('showImg/', showImg)
     re_path(r'^post/(?P<pk>\d+)/$', post_detail, name="post_detail"),
 ]
