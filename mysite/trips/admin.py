@@ -1,5 +1,10 @@
 from django.contrib import admin
-#設定管理後台
-from .models import Post
+from .models import Post, Img
 
-admin.site.register(Post)
+class PostAdmin(admin.ModelAdmin):
+	list_filter = ('created_date',)
+
+admin.site.register(Post, PostAdmin)
+admin.site.register(Img)
+
+admin.site.site_url = 'http://127.0.0.1:8000/home'

@@ -9,4 +9,8 @@
 		<p>{{ post.created_date }}</p>
 		<p>{{ post.text }}</p>
 	</div>
+	{% if user.is_authenticatrd %}
+	<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk%}">Edit Article</a>
+	<a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}">Delete Article</a>
+	{% endif %}
 {% endblock %}

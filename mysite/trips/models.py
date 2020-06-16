@@ -16,3 +16,6 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class Img(models.Model):
+	img_url = models.ImageField(upload_to='img')

@@ -1,19 +1,28 @@
 {% extends "base.html" %}
+
 {% block title %}
-	<title>test blog</title>
+	<title>Blog</title>
 {% endblock %}
 
 {% block content %}
-	<h1>Hello, it's my blog</h1>
-	<div class="container">
-		{% for post in post_list %}
-			<div class="post">
-				<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-				<p>{{ post.created_date }}</p>
-				<p>{{ post.text|linebreaksbr|slice:":30" }}</p>
-			</div>
-		{% empty %}
-			<p>Coming Soon</p>
-		{% endfor %}
-	</div>
+	<h2>Hello</h2>
+	{% if request.user.is_superuser %}
+		<p>Welcome, {{ user.username }}</p>
+		<a href="{% url 'post_new' %}"><span>Create Article</span></a>
+	{% elif request.user.is_authenticated %}
+		<p>Welcome, {{ user.username }}</p>
+		<div class="container">
+			{% for post in post_list %}
+				<div class="post">
+					<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+					<p>{{ post.created_date }}</p>
+					<p>{{ post.text|linebreaksbr|slice:":30" }}</p>
+				</div>
+			{% empty %}
+				<p>Coming Soon</p>
+			{% endfor %}
+		</div>
+	{% else %}
+		<p>You can check all the articles after login</p>
+	{% endif %}
 {% endblock %}
